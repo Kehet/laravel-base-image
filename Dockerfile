@@ -101,6 +101,7 @@ COPY ./php.ini /usr/local/etc/php/conf.d/app.ini
 COPY ./nginx.conf /etc/nginx/sites-enabled/default
 COPY ./nginx.conf /etc/nginx/sites-enabled/default
 COPY ./run.sh /run.sh
+RUN chmod +x /run.sh
 
 EXPOSE 80
 
