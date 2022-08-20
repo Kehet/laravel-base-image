@@ -22,7 +22,8 @@ RUN docker-php-ext-install \
     pcntl \
     bcmath \
     mysqli \
-    pdo_mysql
+    pdo_mysql \
+    exif
 
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 
