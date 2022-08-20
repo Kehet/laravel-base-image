@@ -101,6 +101,7 @@ COPY ./supervisord.conf /etc/supervisord.conf
 COPY ./php.ini /usr/local/etc/php/conf.d/app.ini
 COPY ./nginx.conf /etc/nginx/sites-enabled/default
 COPY ./nginx.conf /etc/nginx/sites-enabled/default
+COPY ./cron.sh /cron.sh
 COPY ./run.sh /run.sh
 RUN chmod +x /run.sh
 
