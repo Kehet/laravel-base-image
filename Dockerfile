@@ -14,7 +14,9 @@ RUN apk update && apk add --no-cache \
     libzip-dev \
     freetype-dev \
     $PHPIZE_DEPS \
-    libjpeg-turbo-dev
+    libjpeg-turbo-dev \
+    imagemagick \
+    imagemagick-dev
 
 # compile native PHP packages
 RUN docker-php-ext-install \
@@ -29,7 +31,10 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 
 RUN pecl install zip && docker-php-ext-enable zip \
     && pecl install igbinary && docker-php-ext-enable igbinary \
-    && yes | pecl install redis && docker-php-ext-enable redis
+    && yes | pecl install redis && docker-php-ext-enable redis \
+    && pecl install imagick && docker-php-ext-enable imagick
+
+RUN apk del --no-cache ${PHPIZE_DEPS}
 
 # stolen from official container
 # https://github.com/nginxinc/docker-nginx/blob/master/stable/alpine/Dockerfile
