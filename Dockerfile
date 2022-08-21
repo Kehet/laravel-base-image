@@ -97,14 +97,12 @@ RUN set -x \
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
 COPY --from=composer/composer /usr/bin/composer /usr/bin/composer
-COPY --from=node /usr/local/bin/npm /usr/local/bin/npm
-COPY --from=node /usr/local/bin/node /usr/local/bin/node
 COPY ./supervisord.conf /etc/supervisord.conf
 COPY ./php.ini /usr/local/etc/php/conf.d/app.ini
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 COPY ./cron.sh /cron.sh
 COPY ./run.sh /run.sh
-RUN chmod +x /run.sh
+RUN chmod +x /run.sh /cron.sh
 
 EXPOSE 80
 
